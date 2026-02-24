@@ -1,0 +1,35 @@
+info(
+    title: "Example"
+    desc: "API 示例"
+    author: "team"
+    version: "v1"
+)
+
+@server(
+    prefix: /api/v1/example
+)
+service example-api {
+    @doc "获取示例"
+    @handler GetExample
+    get /example/:id (GetExampleReq) returns (GetExampleResp)
+
+    @doc "创建示例"
+    @handler CreateExample
+    post /example (CreateExampleReq) returns (CreateExampleResp)
+}
+
+type GetExampleReq {
+    Id string `path:"id"`
+}
+
+type GetExampleResp {
+    Id string `json:"id"`
+}
+
+type CreateExampleReq {
+    Name string `json:"name"`
+}
+
+type CreateExampleResp {
+    Ok bool `json:"ok"`
+}

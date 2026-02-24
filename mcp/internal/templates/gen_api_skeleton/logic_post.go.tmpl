@@ -1,0 +1,21 @@
+package {{.PackageName}}
+
+import (
+	"context"
+
+	"{{.ModulePath}}/internal/svc"
+	"{{.ModulePath}}/internal/types"
+)
+
+type Create{{.ApiName}}Logic struct {
+	ctx    context.Context
+	svcCtx *svc.ServiceContext
+}
+
+func NewCreate{{.ApiName}}Logic(ctx context.Context, svcCtx *svc.ServiceContext) *Create{{.ApiName}}Logic {
+	return &Create{{.ApiName}}Logic{ctx: ctx, svcCtx: svcCtx}
+}
+
+func (l *Create{{.ApiName}}Logic) Create{{.ApiName}}(req *types.Create{{.ApiName}}Req) (*types.Create{{.ApiName}}Resp, error) {
+	return &types.Create{{.ApiName}}Resp{Ok: true}, nil
+}

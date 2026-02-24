@@ -1,0 +1,29 @@
+# Go build
+/bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go workspace
+*.log
+*.tmp
+*.swp
+*.swo
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Code generation
+/tmp/
+
+# Local overrides
+.env
+
+# Local templates/cache
+.goctl/

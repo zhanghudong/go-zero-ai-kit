@@ -1,0 +1,35 @@
+info(
+    title: "{{.ApiName}}"
+    desc: "{{.ApiName}} API"
+    author: "team"
+    version: "v1"
+)
+
+@server(
+    prefix: {{.BasePath}}
+)
+service {{.ApiName}}-api {
+    @doc "Get {{.ApiName}}"
+    @handler Get{{.ApiName}}
+    get /{{.ApiName}}/:id (Get{{.ApiName}}Req) returns (Get{{.ApiName}}Resp)
+
+    @doc "Create {{.ApiName}}"
+    @handler Create{{.ApiName}}
+    post /{{.ApiName}} (Create{{.ApiName}}Req) returns (Create{{.ApiName}}Resp)
+}
+
+type Get{{.ApiName}}Req {
+    Id string `path:"id"`
+}
+
+type Get{{.ApiName}}Resp {
+    Id string `json:"id"`
+}
+
+type Create{{.ApiName}}Req {
+    Name string `json:"name"`
+}
+
+type Create{{.ApiName}}Resp {
+    Ok bool `json:"ok"`
+}

@@ -1,0 +1,4 @@
+# Cursor Rules
+- Use ~/.goctl as template root by default.
+- Never derive templates from business code.
+- Generators must be idempotent and return structured results.

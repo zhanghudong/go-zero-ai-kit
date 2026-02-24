@@ -1,0 +1,25 @@
+package logic
+
+import (
+	"context"
+
+	"{{.ModulePath}}/internal/svc"
+	"{{.ModulePath}}/internal/types"
+)
+
+type PingLogic struct {
+	ctx    context.Context
+	svcCtx *svc.ServiceContext
+}
+
+func NewPingLogic(ctx context.Context, svcCtx *svc.ServiceContext) *PingLogic {
+	return &PingLogic{ctx: ctx, svcCtx: svcCtx}
+}
+
+func (l *PingLogic) Ping(req *types.PingReq) (*types.PingResp, error) {
+	name := req.Name
+	if name == "" {
+		name = "world"
+	}
+	return &types.PingResp{Message: "hello " + name}, nil
+}

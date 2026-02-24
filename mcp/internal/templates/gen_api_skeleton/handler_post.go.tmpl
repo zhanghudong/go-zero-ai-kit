@@ -1,0 +1,29 @@
+package {{.PackageName}}
+
+import (
+	"net/http"
+
+	"{{.ModulePath}}/internal/logic/{{.PackageName}}"
+	"{{.ModulePath}}/internal/svc"
+	"{{.ModulePath}}/internal/types"
+
+	"github.com/zeromicro/go-zero/rest/httpx"
+)
+
+func Create{{.ApiName}}Handler(svcCtx *svc.ServiceContext) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		var req types.Create{{.ApiName}}Req
+		if err := httpx.Parse(r, &req); err != nil {
+			httpx.Error(w, err)
+			return
+		}
+
+		l := logic.NewCreate{{.ApiName}}Logic(r.Context(), svcCtx)
+		resp, err := l.Create{{.ApiName}}(&req)
+		if err != nil {
+			httpx.Error(w, err)
+			return
+		}
+		httpx.OkJson(w, resp)
+	}
+}

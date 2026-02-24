@@ -1,0 +1,17 @@
+package types
+
+type Get{{.ApiName}}Req struct {
+	Id string `path:"id"`
+}
+
+type Get{{.ApiName}}Resp struct {
+	Id string `json:"id"`
+}
+
+type Create{{.ApiName}}Req struct {
+	Name string `json:"name"`
+}
+
+type Create{{.ApiName}}Resp struct {
+	Ok bool `json:"ok"`
+}

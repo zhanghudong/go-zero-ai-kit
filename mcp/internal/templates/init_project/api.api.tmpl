@@ -1,0 +1,23 @@
+info(
+    title: "{{.ServiceName}}"
+    desc: "{{.ProjectName}}"
+    author: "team"
+    version: "v1"
+)
+
+@server(
+    prefix: /api/v1
+)
+service {{.ServiceName}}-api {
+    @doc "Ping"
+    @handler Ping
+    get /ping (PingReq) returns (PingResp)
+}
+
+type PingReq {
+    Name string `json:"name"`
+}
+
+type PingResp {
+    Message string `json:"message"`
+}

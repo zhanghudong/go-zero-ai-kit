@@ -1,0 +1,6 @@
+# Codex Rules
+
+- Use skill: go-zero-ai-kit
+- Follow logic-style, logic-workflow, logic-checklist, logic-patterns
+- Error codes and response must follow your project's errors + response conventions
+- Do not add req == nil checks
