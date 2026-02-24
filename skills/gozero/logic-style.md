@@ -40,3 +40,7 @@
 ## 查询构建规则
 - `CountBuilder` 使用 `*`。
 - `squirrel` 条件字段统一加反引号（如 `` `tenant_id` ``）。
+
+## 时间处理（统一工具包）
+- 统一使用项目公共时间工具包（如 `timeutil`）进行解析与格式化。
+- 列表/详情返回时间字段时优先使用 `timeutil.FormatDateTime` 等封装方法。

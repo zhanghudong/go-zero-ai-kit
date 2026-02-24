@@ -11,6 +11,7 @@ import (
 
     "example.com/project/cmd/api/internal/svc"
     "example.com/project/cmd/api/internal/types"
+    "example.com/project/pkg/timeutil"
 
     "github.com/zeromicro/go-zero/core/logx"
 )
@@ -35,6 +36,8 @@ func (l *ReadLogic) Read(req *types.ReadReq) (*types.ReadResp, error) {
     // TODO: FindOne
 
     // ========== 步骤2：返回 ==========
-    return &types.ReadResp{}, nil
+    return &types.ReadResp{
+        CreateTime: timeutil.NowDateTime(),
+    }, nil
 }
 ```
