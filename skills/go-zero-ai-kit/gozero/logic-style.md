@@ -51,3 +51,4 @@
   - `resp.List[i] = ...`
 - 布尔/枚举字段优先与常量对齐（如 `constant.MockTrue`）。
 - 若常量不存在，应在 `pkg/constant` 中新增并统一使用。
+- 常量定义必须带注释说明。
