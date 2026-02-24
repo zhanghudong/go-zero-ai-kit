@@ -39,3 +39,11 @@
 - 使用预分配切片并按索引赋值（避免 append）
 - 使用统一常量表达布尔/枚举状态（如 `constant.MockTrue`）
 - 常量定义必须带注释说明
+
+8. ID 与幂等
+- 使用 `svcCtx.Snowflake.Generate()` 生成主键
+- 幂等校验通过唯一字段查询
+- 重复写入检测使用项目 `dberr` 工具（如 `dberr.IsDuplicateEntry`）
+
+9. 业务字段补充
+- 操作人信息需查询用户模型并区分 `ErrNotFound` 与系统错误

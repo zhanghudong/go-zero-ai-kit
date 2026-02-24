@@ -52,3 +52,11 @@
 - 布尔/枚举字段优先与常量对齐（如 `constant.MockTrue`）。
 - 若常量不存在，应在 `pkg/constant` 中新增并统一使用。
 - 常量定义必须带注释说明。
+
+## ID 与幂等
+- 统一使用 `svcCtx.Snowflake.Generate()` 生成主键，不在逻辑内直接初始化雪花实例。
+- 幂等校验建议通过唯一字段查询（如 `payment_no`）。
+- 重复写入检测统一使用项目 `dberr` 工具（如 `dberr.IsDuplicateEntry`），不要直接解析驱动错误。
+
+## 业务字段补充
+- 需要补充操作人信息时，先查用户模型，失败需区分 `ErrNotFound` 与系统错误。
