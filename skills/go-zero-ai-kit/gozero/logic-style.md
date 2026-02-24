@@ -44,3 +44,10 @@
 ## 时间处理（统一工具包）
 - 统一使用项目公共时间工具包（如 `timeutil`）进行解析与格式化。
 - 列表/详情返回时间字段时优先使用 `timeutil.FormatDateTime` 等封装方法。
+
+## 列表映射
+- 列表返回优先使用“预分配 + 按索引赋值”的方式：
+  - `resp.List = make([]T, len(rows))`
+  - `resp.List[i] = ...`
+- 布尔/枚举字段优先与常量对齐（如 `constant.MockTrue`）。
+- 若常量不存在，应在 `pkg/constant` 中新增并统一使用。

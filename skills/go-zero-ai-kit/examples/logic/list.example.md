@@ -11,6 +11,7 @@ import (
 
     "example.com/project/cmd/api/internal/svc"
     "example.com/project/cmd/api/internal/types"
+    "example.com/project/pkg/constant"
     "example.com/project/pkg/errors"
 
     "github.com/Masterminds/squirrel"
@@ -69,7 +70,16 @@ func (l *ListLogic) List(req *types.ListReq) (*types.ListResp, error) {
         return nil, errors.ErrInternalError.Wrap(err)
     }
 
-    // TODO: map rows to resp.List
-    return &types.ListResp{Total: total, Page: page, PageSize: pageSize, List: make([]types.ListItem, 0, len(rows))}, nil
+    // 预分配并按索引填充
+    resp := &types.ListResp{Total: total, Page: page, PageSize: pageSize, List: make([]types.ListItem, len(rows))}
+    for i, item := range rows {
+        resp.List[i] = types.ListItem{
+            Id:     item.Id,
+            Name:   item.Name,
+            IsMock: item.IsMock == constant.MockTrue,
+        }
+    }
+
+    return resp, nil
 }
 ```
