@@ -11,6 +11,7 @@ import (
 
     "example.com/project/cmd/api/internal/svc"
     "example.com/project/cmd/api/internal/types"
+    "example.com/project/pkg/errors"
 
     "github.com/Masterminds/squirrel"
     "github.com/zeromicro/go-zero/core/logx"
@@ -50,8 +51,8 @@ func (l *ListLogic) List(req *types.ListReq) (*types.ListResp, error) {
             logx.Field("tenant_id", req.TenantId),
             logx.Field("error", err),
         )
-        // TODO: wrap error with project errors
-        return nil, err
+        // 按项目规范选择合适的错误类型（示例：内部错误）
+        return nil, errors.ErrInternalError.Wrap(err)
     }
 
     if total == 0 {
@@ -64,8 +65,8 @@ func (l *ListLogic) List(req *types.ListReq) (*types.ListResp, error) {
             logx.Field("tenant_id", req.TenantId),
             logx.Field("error", err),
         )
-        // TODO: wrap error with project errors
-        return nil, err
+        // 按项目规范选择合适的错误类型
+        return nil, errors.ErrInternalError.Wrap(err)
     }
 
     // TODO: map rows to resp.List
