@@ -19,6 +19,7 @@ metadata:
 - gozero/logic-patterns.md
 - gozero/error-code.md
 - gozero/commit-message.md
+- gozero/review.md
 
 ## Examples
 - examples/logic/create.example.md
@@ -29,4 +30,5 @@ metadata:
 
 ## Constraints
 - 模板来源以 `~/.goctl` 为唯一权威；不得从业务代码反推模板。
+- 不做 `req == nil` 判断。
 - 逻辑实现必须对齐本仓库定义的风格。
