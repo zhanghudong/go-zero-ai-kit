@@ -14,5 +14,9 @@
 - 忽略自动生成文件（如 `*_gen.go`、`pb.go`、goctl 生成的 `types.go`）。
 - 遇到敏感文件路径（`config/**`, `.env*`, `secrets/**`, `k8s/**`, `etc/**`）只提示跳过，不做内容分析。
 
+## Commit Message 生成规则
+- 新增功能/首次实现：使用 `feat`
+- 修复已存在逻辑缺陷：使用 `fix`
+
 ## Commit Message 格式
 使用 `commit-message.md` 规范。
