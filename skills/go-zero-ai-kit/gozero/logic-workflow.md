@@ -19,3 +19,10 @@
 ## 输出
 - 完整 logic 实现
 - 保持 gofmt 与项目现有风格一致
+
+## 提交规范
+- 使用中文 commit message
+- 遵循 Conventional Commits
+- 建议格式：`<type>(<scope>): <subject>`
+
+详细规范见：`commit-message.md`
