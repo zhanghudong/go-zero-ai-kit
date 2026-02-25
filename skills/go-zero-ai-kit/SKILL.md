@@ -18,6 +18,7 @@ metadata:
 - gozero/logic-checklist.md
 - gozero/logic-patterns.md
 - gozero/error-code.md
+- gozero/commit-message.md
 
 ## Examples
 - examples/logic/create.example.md
