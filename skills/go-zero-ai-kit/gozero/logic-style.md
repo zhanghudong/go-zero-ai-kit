@@ -20,6 +20,14 @@
 - 业务路由逻辑用 `switch` 或清晰函数拆分。
 - 复杂逻辑拆分为私有方法，放在同文件下。
 - 不在 handler 中写业务逻辑，全部放 logic 层。
+- 避免在 `if` 条件中写 `err` 赋值（如 `if _, err = ...; err != nil`），统一“先赋值，再判断”。
+
+### `err` 判断写法（统一）
+- 推荐：
+  - `_, err = model.Insert(...)`
+  - `if err != nil { ... }`
+- 不推荐：
+  - `if _, err = model.Insert(...); err != nil { ... }`
 
 ## 日志风格
 - `Errorw` 用于关键失败场景。
