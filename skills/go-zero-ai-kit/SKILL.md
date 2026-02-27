@@ -13,6 +13,7 @@ metadata:
 ## Entry Points
 - gozero/project-layout.md
 - gozero/api-style.md
+- gozero/db-conventions.md
 - gozero/logic-style.md
 - gozero/logic-workflow.md
 - gozero/logic-checklist.md
@@ -29,6 +30,7 @@ metadata:
 - examples/logic/list.example.md
 - examples/logic/async-task.example.md
 - examples/logic/distributed-lock.example.md
+- examples/model/find-one-by-master.example.md
 
 ## Constraints
 - 模板来源以 `~/.goctl` 为唯一权威；不得从业务代码反推模板。
