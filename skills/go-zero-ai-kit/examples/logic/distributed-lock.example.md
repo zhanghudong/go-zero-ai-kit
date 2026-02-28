@@ -9,14 +9,20 @@ package example
 import (
     "context"
     "fmt"
+    "time"
 
     "example.com/project/cmd/api/internal/svc"
 
+    "codeup.aliyun.com/zlxt/zl-core/redislock"
     "github.com/zeromicro/go-zero/core/logx"
-    "github.com/zeromicro/go-zero/core/stores/redis"
 )
 
-const bizLockExpireSeconds = 30
+const (
+    bizLockKeyFormat  = "lock:<biz>:%d"        // 按业务唯一键与命名空间调整
+    bizLockTTL        = 30 * time.Second       // 按临界区最长耗时评估
+    bizLockRetryTimes = 3                      // 按幂等要求与竞争概率调整
+    bizLockRetryWait  = 150 * time.Millisecond // 按上游超时与重试节奏调整
+)
 
 type LockGuardLogic struct {
     logx.Logger
@@ -34,12 +40,17 @@ func NewLockGuardLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LockGua
 
 func (l *LockGuardLogic) withBizLock(bizID int64, fn func(ctx context.Context) error) error {
     // ========== 步骤1：构建锁 ==========
-    lockKey := fmt.Sprintf("lock:biz:%d", bizID)
-    lock := redis.NewRedisLock(l.svcCtx.Redis, lockKey)
-    lock.SetExpire(bizLockExpireSeconds)
+    lockKey := fmt.Sprintf(bizLockKeyFormat, bizID)
+    locker := redislock.NewLocker(
+        l.svcCtx.Redis,
+        lockKey,
+        redislock.WithTTL(bizLockTTL),
+        redislock.WithRetryTimes(bizLockRetryTimes),
+        redislock.WithRetryInterval(bizLockRetryWait),
+    )
 
     // ========== 步骤2：获取锁 ==========
-    acquired, err := lock.AcquireCtx(l.ctx)
+    err := locker.Acquire(l.ctx)
     if err != nil {
         l.Errorw("获取分布式锁失败",
             logx.Field("biz_id", bizID),
@@ -48,26 +59,14 @@ func (l *LockGuardLogic) withBizLock(bizID int64, fn func(ctx context.Context) e
         )
         return err
     }
-    if !acquired {
-        l.Infow("锁竞争未获取，跳过处理",
-            logx.Field("biz_id", bizID),
-            logx.Field("lock_key", lockKey),
-        )
-        return nil
-    }
 
     // ========== 步骤3：释放锁 ==========
     defer func() {
-        if released, releaseErr := lock.ReleaseCtx(l.ctx); releaseErr != nil {
+        if releaseErr := locker.Release(l.ctx); releaseErr != nil {
             l.Errorw("释放分布式锁失败",
                 logx.Field("biz_id", bizID),
                 logx.Field("lock_key", lockKey),
                 logx.Field("err", releaseErr),
-            )
-        } else if !released {
-            l.Errorw("分布式锁已过期或被其他实例释放",
-                logx.Field("biz_id", bizID),
-                logx.Field("lock_key", lockKey),
             )
         }
     }()
