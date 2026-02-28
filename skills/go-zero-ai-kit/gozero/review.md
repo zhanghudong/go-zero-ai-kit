@@ -1,6 +1,6 @@
 # Review 规则（输入 review 时执行）
 
-当用户输入 `review` 时，默认输出两部分：代码审查结论 + commit message。
+当用户输入 `review` 时，默认输出两部分：代码审查结论 + commit message；仅针对未提交的修改执行。
 
 ## 流程
 1. 仅检查未提交的修改（`git status`、`git diff`）。
