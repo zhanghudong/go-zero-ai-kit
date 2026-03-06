@@ -44,10 +44,7 @@ func (l *CreateLogic) Create(req *types.CreateReq) (*types.CreateResp, error) {
     case errors.Is(err, model.ErrNotFound):
         // 不存在，继续创建
     case err != nil:
-        l.Errorw("查询记录失败",
-            logx.Field("uniq_key", req.UniqKey),
-            logx.Field("error", err),
-        )
+        l.Errorw("查询记录失败", logx.Field("uniq_key", req.UniqKey), logx.Field("error", err))
         return nil, errors.ErrInternalError.Wrap(err)
     }
 
@@ -65,10 +62,7 @@ func (l *CreateLogic) Create(req *types.CreateReq) (*types.CreateResp, error) {
         if dberr.IsDuplicateEntry(err) {
             return nil, errors.ErrDuplicateKey.Wrap(err)
         }
-        l.Errorw("写入失败",
-            logx.Field("uniq_key", req.UniqKey),
-            logx.Field("error", err),
-        )
+        l.Errorw("写入失败", logx.Field("uniq_key", req.UniqKey), logx.Field("error", err))
         return nil, errors.ErrInternalError.Wrap(err)
     }
 

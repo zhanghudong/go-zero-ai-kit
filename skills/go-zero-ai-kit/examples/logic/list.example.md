@@ -48,10 +48,7 @@ func (l *ListLogic) List(req *types.ListReq) (*types.ListResp, error) {
 
     total, err := l.svcCtx.ExampleModel.FindCount(l.ctx, countBuilder)
     if err != nil {
-        l.Errorw("查询列表统计失败",
-            logx.Field("tenant_id", req.TenantId),
-            logx.Field("error", err),
-        )
+        l.Errorw("查询列表统计失败", logx.Field("tenant_id", req.TenantId), logx.Field("error", err))
         // 按项目规范选择合适的错误类型（示例：内部错误）
         return nil, errors.ErrInternalError.Wrap(err)
     }
@@ -62,10 +59,7 @@ func (l *ListLogic) List(req *types.ListReq) (*types.ListResp, error) {
 
     rows, err := l.svcCtx.ExampleModel.FindPageListByPage(l.ctx, rowBuilder, page, pageSize, "id DESC")
     if err != nil {
-        l.Errorw("查询列表失败",
-            logx.Field("tenant_id", req.TenantId),
-            logx.Field("error", err),
-        )
+        l.Errorw("查询列表失败", logx.Field("tenant_id", req.TenantId), logx.Field("error", err))
         // 按项目规范选择合适的错误类型
         return nil, errors.ErrInternalError.Wrap(err)
     }

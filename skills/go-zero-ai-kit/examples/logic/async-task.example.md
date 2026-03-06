@@ -52,10 +52,7 @@ func (l *AsyncTaskLogic) Handle(req *types.AsyncTaskReq) (*types.AsyncTaskResp, 
 
         threadL := NewAsyncTaskLogic(asyncCtx, l.svcCtx)
         if err := threadL.tryAsyncTask(bizID, &reqCopy); err != nil {
-            threadL.Errorw("异步通知失败",
-                logx.Field("biz_id", bizID),
-                logx.Field("err", err),
-            )
+            threadL.Errorw("异步通知失败", logx.Field("biz_id", bizID), logx.Field("err", err))
         }
     })
 

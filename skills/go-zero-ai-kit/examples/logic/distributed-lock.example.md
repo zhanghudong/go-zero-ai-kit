@@ -61,18 +61,11 @@ func (l *LockGuardLogic) withBizLock(bizID int64, fn func(ctx context.Context) e
     })
     if err != nil {
         if redislock.IsLockBusy(err) {
-            l.Infow("锁竞争未获取，跳过处理",
-                logx.Field("biz_id", bizID),
-                logx.Field("lock_key", lockKey),
-            )
+            l.Infow("锁竞争未获取，跳过处理", logx.Field("biz_id", bizID), logx.Field("lock_key", lockKey))
             return nil
         }
 
-        l.Errorw("执行加锁临界区失败",
-            logx.Field("biz_id", bizID),
-            logx.Field("lock_key", lockKey),
-            logx.Field("err", err),
-        )
+        l.Errorw("执行加锁临界区失败", logx.Field("biz_id", bizID), logx.Field("lock_key", lockKey), logx.Field("err", err))
         return err
     }
 
