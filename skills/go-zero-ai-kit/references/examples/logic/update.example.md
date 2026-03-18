@@ -1,5 +1,18 @@
 # 示例：Update（更新）
 
+适用场景：
+- 按字段选择性更新
+- 更新前需要先校验当前状态或资源归属
+
+对应规范：
+- `references/gozero/logic-patterns.md` 模式5
+- `references/gozero/logic-style.md`
+
+示例要点：
+- 先查询当前记录，避免无条件更新
+- 仅对有值的可选字段构建更新内容
+- 执行更新后返回明确结果
+
 ```go
 // Code scaffolded by goctl. Safe to edit.
 // goctl 1.9.2

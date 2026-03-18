@@ -1,0 +1,4 @@
+interface:
+  display_name: "Go-Zero AI Kit"
+  short_description: "go-zero workflow and guardrails"
+  default_prompt: "Use $go-zero-ai-kit to implement or review go-zero code with our team workflow and generated-code constraints."

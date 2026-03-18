@@ -1,5 +1,19 @@
 # 示例：Distributed Lock（分布式锁）
 
+适用场景：
+- 按业务键串行化处理高并发请求
+- 防止重复提交、重复执行或并发状态冲突
+
+对应规范：
+- `references/gozero/logic-patterns.md` 模式8
+- `references/gozero/logic-checklist.md`
+
+示例要点：
+- 锁 key 必须绑定业务主键
+- 优先使用项目统一封装的锁组件
+- 锁竞争与系统异常要区分处理
+- 临界区内部仍需考虑 CAS、幂等和影响行数校验
+
 ```go
 // Code scaffolded by goctl. Safe to edit.
 // goctl 1.9.2

@@ -1,5 +1,19 @@
 # 示例：Create（新增）
 
+适用场景：
+- 创建主实体并返回主键
+- 需要先做幂等校验，再落库
+
+对应规范：
+- `references/gozero/logic-patterns.md` 模式3
+- `references/gozero/logic-style.md`
+
+示例要点：
+- 先按业务唯一键做幂等检查
+- 主键统一由 `svcCtx.Snowflake.Generate()` 生成
+- 重复写入通过 `dberr.IsDuplicateEntry` 识别
+- DB 异常需要日志记录并按项目错误类型包装
+
 ```go
 // Code scaffolded by goctl. Safe to edit.
 // goctl 1.9.2

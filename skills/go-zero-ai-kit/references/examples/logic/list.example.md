@@ -1,5 +1,19 @@
 # 示例：List（分页查询）
 
+适用场景：
+- 常规分页列表接口
+- 需要同时查询总数和分页数据
+
+对应规范：
+- `references/gozero/logic-patterns.md` 模式6
+- `references/gozero/logic-style.md`
+
+示例要点：
+- `page` 默认值来自 `.api`，`pageSize` 只做上限裁剪
+- `RowBuilder` 与 `CountBuilder("*")` 同步追加条件
+- 先查总数，再查分页数据
+- 返回列表使用预分配切片并按索引赋值
+
 ```go
 // Code scaffolded by goctl. Safe to edit.
 // goctl 1.9.2

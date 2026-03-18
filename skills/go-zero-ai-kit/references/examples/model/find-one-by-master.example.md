@@ -1,5 +1,17 @@
 # 示例：Model 主库查询（读写分离强一致）
 
+适用场景：
+- 刚写后读，且要求强一致
+- 主从延迟可能影响读结果
+
+对应规范：
+- `references/gozero/db-conventions.md`
+
+示例要点：
+- 主库查询统一使用 `/*FORCE_MASTER*/` 注释前缀
+- 方法命名统一使用 `ByMaster` 后缀
+- `sqlc.ErrNotFound` 需要转换为项目模型层 `ErrNotFound`
+
 ```go
 package model
 

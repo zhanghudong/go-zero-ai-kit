@@ -2,6 +2,11 @@
 
 当用户输入 `review` 时，默认输出两部分：代码审查结论 + commit message；仅针对未提交的修改执行。
 
+适用场景：
+- 用户明确要求 `review`
+- 用户要求审查当前未提交代码
+- 用户希望基于当前 diff 生成审查结论和 commit message
+
 ## 流程
 1. 仅检查未提交的修改（`git status`、`git diff`）。
 2. 审核每个变更文件，重点关注：缺陷、逻辑问题、风险点、风格一致性。
@@ -15,3 +20,8 @@
 - 遇到敏感文件路径（`config/**`, `.env*`, `secrets/**`, `k8s/**`, `etc/**`）只提示跳过，不做内容分析。
 - 输出顺序固定：先输出 review 结果，再单独输出 commit message；两者内容不得混写。
 - 若用户明确要求“只要 review，不要 commit message”，则跳过 commit message 生成。
+
+禁止事项：
+- 一边 review 一边顺手改代码。
+- 把已提交内容或无关历史变更纳入本次 review。
+- 对自动生成文件做风格类审查。

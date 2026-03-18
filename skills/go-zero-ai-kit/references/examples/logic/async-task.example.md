@@ -1,5 +1,19 @@
 # 示例：Async Task（异步任务）
 
+适用场景：
+- 主流程成功后异步通知、刷缓存或触发后续任务
+- 需要保留 trace，但不能继续使用请求原始上下文
+
+对应规范：
+- `references/gozero/logic-patterns.md` 模式7
+- `references/gozero/logging-tracing.md`
+
+示例要点：
+- 主流程先返回，异步任务不阻塞接口响应
+- 复制必要入参，避免共享可变对象
+- 创建新 context 保留 trace，并设置独立超时
+- 异步失败只记日志，不影响主流程结果
+
 ```go
 // Code scaffolded by goctl. Safe to edit.
 // goctl 1.9.2
