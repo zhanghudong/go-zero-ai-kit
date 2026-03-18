@@ -2,6 +2,13 @@
 
 本流程用于补全 goctl 生成的 logic 层代码，面向公司现有 go-zero 项目。
 
+前置条件：
+- 已完成 `.api` 修改
+- 已执行 `make`、`goctl api go` 或项目等价生成命令
+- 相关 `handler/logic/types` 已按最新 `.api` 生成
+
+如果尚未满足前置条件，先遵循 `api-dev-workflow.md` 的阶段一规则，只修改 `.api`，不要提前补 `handler/logic/types`。
+
 ## 输入
 - 详设文档（优先）
 - .api

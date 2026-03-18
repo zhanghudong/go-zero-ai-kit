@@ -13,6 +13,7 @@ metadata:
 ## Entry Points
 - gozero/project-layout.md
 - gozero/api-style.md
+- gozero/api-dev-workflow.md
 - gozero/db-conventions.md
 - gozero/logic-style.md
 - gozero/logic-workflow.md

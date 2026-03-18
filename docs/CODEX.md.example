@@ -1,6 +1,8 @@
 # Codex Rules
 
 - Use skill: go-zero-ai-kit
-- Follow logic-style, logic-workflow, logic-checklist, logic-patterns
+- Follow api-dev-workflow, logic-style, logic-workflow, logic-checklist, logic-patterns
+- When developing a new API, phase 1 only edits `.api`; do not write `handler/logic/types` before `make` or goctl generation is finished
+- After `.api` is updated, stop and ask me to run `make`; only continue with logic after I confirm generation is done
 - Error codes and response must follow your project's errors + response conventions
 - Do not add req == nil checks

@@ -30,6 +30,9 @@ codex skill install https://github.com/your-org/go-zero-ai-kit
 ```md
 # Codex Rules
 - Use skill: go-zero-ai-kit
+- Follow api-dev-workflow, logic-style, logic-workflow, logic-checklist, logic-patterns
+- When developing a new API, phase 1 only edits `.api`; do not write `handler/logic/types` before `make` or goctl generation is finished
+- After `.api` is updated, stop and ask me to run `make`; only continue with logic after I confirm generation is done
 ```
 
 **工具：init_project**
