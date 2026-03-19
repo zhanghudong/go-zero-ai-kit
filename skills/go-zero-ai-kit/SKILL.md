@@ -1,8 +1,6 @@
 ---
 name: go-zero-ai-kit
-description: Use when working on go-zero projects that need team-specific API workflow, logic implementation, review rules, commit conventions, or generated-code constraints.
-metadata:
-  short-description: go-zero workflow and guardrails
+description: Use when working on go-zero projects that need team-specific API workflow, logic implementation, review policy for Codex built-in review modes, commit conventions, or generated-code constraints. Trigger when Codex needs to review go-zero changes against a base branch, review uncommitted changes, review a commit, or apply team-specific Chinese review output and commit message rules.
 ---
 
 # go-zero-ai-kit Skill
@@ -13,7 +11,7 @@ metadata:
 ## Use This Skill When
 - 用户要求开发、修改、补全 go-zero 接口或 logic
 - 用户要求按团队 go-zero 风格实现代码
-- 用户要求 review 未提交的 go-zero 改动
+- 用户使用 Codex 内建 review 能力审查 go-zero 改动
 - 用户要求生成符合团队规范的中文 commit message
 - 任务涉及 `.api`、`internal/logic`、`internal/handler`、`internal/types`、goctl 模板或生成代码边界
 
@@ -31,7 +29,7 @@ metadata:
 - 数据库与 model 约束：读 `references/gozero/db-conventions.md`。
 - 错误码处理：读 `references/gozero/error-code.md`。
 - 日志与链路追踪约束：读 `references/gozero/logging-tracing.md`。
-- review 请求：读 `references/gozero/review.md`。
+- Codex review 请求：读 `references/gozero/review.md`。
 - 生成 commit message：读 `references/gozero/commit-message.md`。
 - 判断目录职责或生成边界：读 `references/gozero/project-layout.md`。
 
