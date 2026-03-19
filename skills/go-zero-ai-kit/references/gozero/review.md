@@ -16,6 +16,9 @@
 ## 约束
 - 只评审未提交代码，不评审已提交内容。
 - 不修改代码，只给出审查意见。
+- review 模式下禁止主动执行 `go test`、`make test`、`lint`、`build`、安装依赖或启动服务。
+- review 模式下仅允许使用读取型命令获取上下文，例如 `git status`、`git diff`、`git diff --name-only` 及必要的文件内容查看。
+- 若审查结论必须依赖运行结果，先明确说明原因并征求用户确认；未经确认不得执行。
 - 忽略自动生成文件（如 `*_gen.go`、`pb.go`、goctl 生成的 `types.go`）。
 - 遇到敏感文件路径（`config/**`, `.env*`, `secrets/**`, `k8s/**`, `etc/**`）只提示跳过，不做内容分析。
 - 输出顺序固定：先输出 review 结果，再单独输出 commit message；两者内容不得混写。
