@@ -35,6 +35,11 @@ description: Use when working on go-zero projects that need team-specific API wo
 - 生成 commit message：读 `references/gozero/commit-message.md`。
 - 判断目录职责或生成边界：读 `references/gozero/project-layout.md`。
 
+## Priority
+- 当用户明确要求“给数据库表新增字段”“生成/追加 `ALTER TABLE ... ADD COLUMN ...` SQL”“写入某个 `.sql` 文件”时，优先走 `references/gozero/db-alter-sql.md`，不要先按通用数据库约束流程处理。
+- 当用户明确给出目标 SQL 文件名（如 `procurement.sql`）时，优先读取并修改该文件；不要默认改写为 `<项目名>.sql`，除非用户没有指定文件名。
+- `references/gozero/db-conventions.md` 只在字段类型、默认值、命名规范拿不准时作为补充参考，不作为这类任务的首个读取文件。
+
 ## References
 - `references/gozero/project-layout.md`
 - `references/gozero/api-style.md`
