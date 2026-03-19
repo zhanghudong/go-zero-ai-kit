@@ -1,6 +1,6 @@
 ---
 name: go-zero-ai-kit
-description: Use when working on go-zero projects that need team-specific API workflow, logic implementation, review policy for Codex built-in review modes, commit conventions, or generated-code constraints. Trigger when Codex needs to review go-zero changes against a base branch, review uncommitted changes, review a commit, or apply team-specific Chinese review output and commit message rules.
+description: Use when working on go-zero projects that need team-specific API workflow, logic implementation, database ADD COLUMN SQL generation, review policy for Codex built-in review modes, commit conventions, or generated-code constraints. Trigger when Codex needs to add database columns by writing ALTER TABLE ... ADD COLUMN SQL into the project-root <project-name>.sql file, review go-zero changes against a base branch, review uncommitted changes, review a commit, or apply team-specific Chinese review output and commit message rules.
 ---
 
 # go-zero-ai-kit Skill
@@ -11,6 +11,7 @@ description: Use when working on go-zero projects that need team-specific API wo
 ## Use This Skill When
 - 用户要求开发、修改、补全 go-zero 接口或 logic
 - 用户要求按团队 go-zero 风格实现代码
+- 用户要求为数据库表新增字段，并在项目根目录的 `<项目名>.sql` 中生成变更 SQL
 - 用户使用 Codex 内建 review 能力审查 go-zero 改动
 - 用户要求生成符合团队规范的中文 commit message
 - 任务涉及 `.api`、`internal/logic`、`internal/handler`、`internal/types`、goctl 模板或生成代码边界
@@ -27,6 +28,7 @@ description: Use when working on go-zero projects that need team-specific API wo
 - 已生成 scaffold 后补全业务：读 `references/gozero/logic-workflow.md`、`references/gozero/logic-style.md`、`references/gozero/logic-checklist.md`。
 - 设计 `.api`：读 `references/gozero/api-style.md`。
 - 数据库与 model 约束：读 `references/gozero/db-conventions.md`。
+- 数据库新增字段 SQL：读 `references/gozero/db-alter-sql.md`。
 - 错误码处理：读 `references/gozero/error-code.md`。
 - 日志与链路追踪约束：读 `references/gozero/logging-tracing.md`。
 - Codex review 请求：读 `references/gozero/review.md`。
@@ -38,6 +40,7 @@ description: Use when working on go-zero projects that need team-specific API wo
 - `references/gozero/api-style.md`
 - `references/gozero/api-dev-workflow.md`
 - `references/gozero/db-conventions.md`
+- `references/gozero/db-alter-sql.md`
 - `references/gozero/logic-style.md`
 - `references/gozero/logic-workflow.md`
 - `references/gozero/logic-checklist.md`
