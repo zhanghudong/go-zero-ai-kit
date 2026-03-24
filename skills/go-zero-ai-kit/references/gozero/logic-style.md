@@ -63,8 +63,9 @@
 - `squirrel` 条件字段统一加反引号（如 `` `tenant_id` ``）。
 
 ## 时间处理（统一工具包）
-- 统一使用项目公共时间工具包（如 `timeutil`）进行解析与格式化。
-- 列表/详情返回时间字段时优先使用 `timeutil.FormatDateTime` 等封装方法。
+- 统一使用项目公共时间工具包（如 `codeup.aliyun.com/zlxt/zl-core/timeutil`）处理当前时间获取、解析与格式化。
+- 仅在公共工具无法覆盖的 `time.Duration`、layout 常量、超时配置等场景使用标准库 `time`，避免直接写 `time.Now()`。
+- 列表/详情返回时间字段时优先使用 `timeutil.FormatDateTime` 等封装方法，不直接透出原始 `time.Time`。
 
 ## 列表映射
 - 列表返回优先使用预分配 + 按索引赋值：

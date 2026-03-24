@@ -1,4 +1,4 @@
 interface:
   display_name: "Go-Zero AI Kit"
-  short_description: "go-zero workflow and guardrails"
-  default_prompt: "Use $go-zero-ai-kit to implement or review go-zero code with our team workflow and generated-code constraints."
+  short_description: "go-zero workflow, logic guardrails, SQL/review rules"
+  default_prompt: "Use $go-zero-ai-kit to implement, review, or update go-zero code with our team workflow, SQL change rules, timeutil conventions, and generated-code constraints."
