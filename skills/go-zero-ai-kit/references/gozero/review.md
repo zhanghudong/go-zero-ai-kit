@@ -23,10 +23,10 @@
 ## 输出要求
 - 必须使用中文，不沿用默认英文 review 风格。
 - 默认输出两部分：review 结果 + commit message；两者内容不得混写。
-- review 结果固定分为：必须修复、建议修复、可选优化。
+- review 结果固定分为：必须修复、可选优化。
 - 若某一类无内容，明确写“无”。
 - Review against a base branch 的 review 结果应按 PR 风格组织，先给总体结论，再给分项问题。
-- Review against a base branch 生成的是一条推荐的 squash commit message。
+- Review against a base branch 必须生成一条 squash commit message。
 - Review uncommitted changes 生成的是一条基于当前未提交 diff 的普通 commit message。
 - Review a commit 默认只输出 review 结果；只有用户明确要求时才补充 commit message。
 - 若用户明确要求“只要 review，不要 commit message”，则跳过 commit message 生成。
@@ -44,4 +44,4 @@
 - 一边 review 一边顺手改代码。
 - 把已提交内容或无关历史变更纳入本次 review。
 - 对自动生成文件做风格类审查。
-- 在 base branch review 中臆造多条历史 commit message；默认只给一条推荐 squash commit message。
+- 在 base branch review 中臆造多条历史 commit message；默认只给一条 squash commit message。

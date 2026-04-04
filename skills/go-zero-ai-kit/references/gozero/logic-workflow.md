@@ -41,6 +41,6 @@
 ## 提交规范
 - 使用中文 commit message
 - 遵循 Conventional Commits
-- 建议格式：`<type>(<scope>): <subject>`
+- 固定格式：`<type>(<scope>): <subject>`
 
 详细规范见：`commit-message.md`
