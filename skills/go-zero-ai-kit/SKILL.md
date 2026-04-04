@@ -1,16 +1,17 @@
 ---
 name: go-zero-ai-kit
-description: Use when working on go-zero projects that need team-specific API workflow, logic implementation, database ADD COLUMN SQL generation, review policy for Codex built-in review modes, commit conventions, or generated-code constraints. Trigger when Codex needs to add database columns by writing ALTER TABLE ... ADD COLUMN SQL into the project-root <project-name>.sql file, review go-zero changes against a base branch, review uncommitted changes, review a commit, or apply team-specific Chinese review output and commit message rules.
+description: Use when working on go-zero projects that need team-specific API workflow, logic implementation, function splitting rules, backend architecture judgment, database ADD COLUMN SQL generation, review policy for Codex built-in review modes, commit conventions, or generated-code constraints. Trigger when Codex needs to add database columns by writing ALTER TABLE ... ADD COLUMN SQL into the project-root <project-name>.sql file, review go-zero changes against a base branch, review uncommitted changes, review a commit, judge whether logic should stay in the main flow or be extracted for reuse, decide where domain logic should live, or apply team-specific Chinese review output and commit message rules.
 ---
 
 # go-zero-ai-kit Skill
 
 ## Summary
-用于 go-zero 项目的团队规范技能，覆盖接口开发流程、logic 实现风格、review 规则、提交规范，以及 goctl 生成代码边界。
+用于 go-zero 项目的团队规范技能，覆盖接口开发流程、logic 实现风格、函数拆分判断、后端架构边界、review 规则、提交规范，以及 goctl 生成代码边界。
 
 ## Use This Skill When
 - 用户要求开发、修改、补全 go-zero 接口或 logic
 - 用户要求按团队 go-zero 风格实现代码
+- 用户要求判断某段 logic 该不该抽函数、该放在哪个领域、是否属于过度设计
 - 用户要求为数据库表新增字段，并在项目根目录的 `<项目名>.sql` 中生成变更 SQL
 - 用户使用 Codex 内建 review 能力审查 go-zero 改动
 - 用户要求生成符合团队规范的中文 commit message
@@ -28,6 +29,8 @@ description: Use when working on go-zero projects that need team-specific API wo
 - 新增接口、改接口定义、接口字段变更：先读 `references/gozero/api-dev-workflow.md`，只改 `.api`。
 - 已生成 scaffold 后补全业务：读 `references/gozero/logic-workflow.md`、`references/gozero/logic-style.md`、`references/gozero/logic-checklist.md`。
 - 设计 `.api`：读 `references/gozero/api-style.md`。
+- 判断函数是否该抽、主流程是否应保留查询解析步骤：读 `references/gozero/function-splitting.md`。
+- 判断逻辑应该归属哪个领域，以及是否该做统一入口：读 `references/gozero/backend-architect.md`。
 - 数据库与 model 约束：读 `references/gozero/db-conventions.md`。
 - 数据库新增字段 SQL：读 `references/gozero/db-alter-sql.md`。
 - 错误码处理：读 `references/gozero/error-code.md`。
@@ -47,6 +50,8 @@ description: Use when working on go-zero projects that need team-specific API wo
 - `references/gozero/api-dev-workflow.md`
 - `references/gozero/db-conventions.md`
 - `references/gozero/db-alter-sql.md`
+- `references/gozero/function-splitting.md`
+- `references/gozero/backend-architect.md`
 - `references/gozero/logic-style.md`
 - `references/gozero/logic-workflow.md`
 - `references/gozero/logic-checklist.md`
